@@ -88,11 +88,14 @@
     const yesBtn = document.getElementById("yes");
     const card = document.querySelector(".card");
   
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * 250;
-      const y = Math.random() * 80;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    ["mouseover", "touchstart"].forEach(evt => {
+  noBtn.addEventListener(evt, () => {
+    const x = Math.random() * 250;
+    const y = Math.random() * 80;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+});
+
   
     yesBtn.addEventListener("click", () => {
       card.innerHTML = `
