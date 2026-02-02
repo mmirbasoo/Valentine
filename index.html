@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 60px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+
+    .buttons {
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      margin-right: 20px;
+    }
+
+    #no {
+      background: #ffe3e9;
+      color: #ff4d6d;
+      position: absolute;
+    }
+
+    /* Floating flowers */
+    .flower {
+      position: absolute;
+      font-size: 24px;
+      animation: float 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-10vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Nairi, will you be my Valentine? 💘</h1>
+  <div class="buttons">
+    <button id="yes" onclick="alert('YAY!!! 💖🌹')">Yes</button>
+    <button id="no">No</button>
+  </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const card = document.querySelector(".card");
+  
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 250;
+      const y = Math.random() * 80;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  
+    yesBtn.addEventListener("click", () => {
+      card.innerHTML = `
+        <h1>💖🐱</h1>
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif"
+             style="width:260px;border-radius:20px;">
+      `;
+      launchConfetti();
+    });
+  
+    function launchConfetti() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.innerText = "💖";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-20px";
+        heart.style.fontSize = "24px";
+        heart.style.animation = "fall 3s linear";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
+    }
+
+    
+  </script>
+  
+
+</body>
+</html>
